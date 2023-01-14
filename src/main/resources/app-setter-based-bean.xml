@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--基于Setter注入方式 XML-->
+
+    <bean id="simpleMovieListerWithSetter" class="dependency.SimpleMovieListerWithSetter">
+        <!--定义需要注入的属性-->
+        <property name="movieFinder" ref="movieFinder"/>
+    </bean>
+
+    <bean id="movieFinder" class="dependency.MovieFinder"/>
+
+</beans>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="simpleMovieLister" class="dependency.SimpleMovieLister">
+        <!-- index:构造函数入参index   type:构造函数入参类   ref:依赖属性bean的ID  value:依赖属性的值(primitive type)  -->
+        <constructor-arg index="0" type="dependency.MovieFinder" ref="movieFinder"/>
+        <constructor-arg index="1" type="int" value="1"/>
+    </bean>
+
+    <bean id="simpleMovieLister2" class="dependency.SimpleMovieLister">
+        <!-- name需要配合    @ConstructorProperties({"movieFinder"}) 一起使用  -->
+        <constructor-arg name="movieFinder" ref="movieFinder"/>
+    </bean>
+
+    <bean id="movieFinder" class="dependency.MovieFinder"/>
+
+</beans>
